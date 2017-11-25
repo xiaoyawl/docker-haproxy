@@ -9,9 +9,9 @@ ENV DOWN_URL=http://www.haproxy.org/download \
 RUN set -x && \
 	DOWN_URL=${DOWN_URL}/${VERSION%.*}/src/haproxy-${VERSION}.tar.gz && \
 	FILE_NAME=${DOWN_URL##*/} && \
-	BUILD_DEPS="make gcc g++ linux-headers python pcre-dev openssl-dev zlib-dev tar socat" && \
+	BUILD_DEPS="make gcc g++ linux-headers python pcre-dev openssl-dev zlib-dev tar" && \
 	# grab su-exec for easy step-down from root
-	RUN_DEPS="pcre libssl1.0 musl libcrypto1.0 busybox zlib supervisor inotify-tools su-exec>=0.2 tar" && \
+	RUN_DEPS="pcre libssl1.0 musl libcrypto1.0 busybox zlib supervisor inotify-tools su-exec>=0.2 tar socat" && \
 	mkdir -p ${CONF_DIR} ${TEMP_DIR} /data && \
 	cd ${TEMP_DIR} && \
 	apk --update --no-cache upgrade && \
